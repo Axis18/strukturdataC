@@ -96,6 +96,7 @@ for hasil in hasil_benchmark:
         f"{hasil[3]:.6f}"
     )
 
+
 # =========================
 # Grafik Sederhana
 # =========================
@@ -103,16 +104,15 @@ st.subheader("Grafik Sederhana")
 
 for hasil in hasil_benchmark:
     jumlah = hasil[0]
-
     bar_selection = "█" * int(hasil[1] * 1000)
     bar_insertion = "█" * int(hasil[2] * 1000)
     bar_quick = "█" * int(hasil[3] * 1000)
-
     st.write(f"Data {jumlah}")
     st.write(f"Selection : {bar_selection}")
     st.write(f"Insertion : {bar_insertion}")
     st.write(f"Quick     : {bar_quick}")
     st.write("")
+
 
 # =========================
 # Analisis

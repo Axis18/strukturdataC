@@ -66,20 +66,18 @@ for jumlah in ukuran_data:
     total_selection = 0
     total_insertion = 0
     total_quick = 0
+
     for i in range(3):
         data_acak = random.sample(range(jumlah * 10), jumlah)
         total_selection += hitung_waktu(selection_sort, data_acak)
         total_insertion += hitung_waktu(insertion_sort, data_acak)
         total_quick += hitung_waktu(quick_sort, data_acak)
         print(f"  Iterasi {i+1}: Selection={total_selection/(i+1):.6f}s, Insertion={total_insertion/(i+1):.6f}s, Quick={total_quick/(i+1):.6f}s", end="\r")
-
     rata_selection = total_selection / 3
     rata_insertion = total_insertion / 3
     rata_quick = total_quick / 3
-
     hasil_benchmark.append([jumlah, rata_selection, rata_insertion, rata_quick])
     print()  # New line after progress
-
 
 # =========================
 # Tabel Hasil
@@ -101,16 +99,14 @@ print("GRAFIK SEDERHANA (skala 1 detik = 50 karakter)")
 print("=" * 60)
 
 for hasil in hasil_benchmark:
-    jumlah = hasil[0]    
+    jumlah = hasil[0]
     # Skala disesuaikan agar grafik tidak terlalu panjang
     skala_selection = min(hasil[1] * 200, 80)
     skala_insertion = min(hasil[2] * 200, 80)
     skala_quick = min(hasil[3] * 200, 80)
-    
     bar_selection = "█" * int(skala_selection)
     bar_insertion = "█" * int(skala_insertion)
-    bar_quick = "█" * int(skala_quick)
-    
+    bar_quick = "█" * int(skala_quick)    
     print(f"\nData {jumlah}")
     print(f"Selection : {bar_selection} ({hasil[1]:.6f}s)")
     print(f"Insertion : {bar_insertion} ({hasil[2]:.6f}s)")
@@ -134,8 +130,8 @@ elif total_rata_insertion < total_rata_quick:
 else:
     tercepat = "Quick Sort"
 
-print(f"\nAlgoritma tercepat secara keseluruhan: **{tercepat}**")
-print("\nKesimpulan:")
+print(f"\n✅ Algoritma tercepat secara keseluruhan: **{tercepat}**")
+print("\n📊 Kesimpulan:")
 print("   • Quick Sort terbukti paling cepat untuk data besar (O(n log n))")
 print("   • Selection Sort dan Insertion Sort lambat karena O(n²)")
 print("   • Untuk 50.000 data, Quick Sort bisa puluhan kali lebih cepat")
@@ -144,7 +140,7 @@ print("   • Hasil benchmark sesuai dengan teori kompleksitas algoritma")
 # Perbandingan spesifik untuk data terbesar
 if len(hasil_benchmark) > 0:
     data_terbesar = hasil_benchmark[-1]
-    print(f"\nPada data {data_terbesar[0]}:")
+    print(f"\n📈 Pada data {data_terbesar[0]}:")
     print(f"   • Quick Sort {data_terbesar[3]/data_terbesar[1]:.1f}x lebih cepat dari Selection Sort")
     print(f"   • Quick Sort {data_terbesar[3]/data_terbesar[2]:.1f}x lebih cepat dari Insertion Sort")
 print("\n" + "=" * 60)
